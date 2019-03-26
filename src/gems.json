@@ -1,39 +1,5 @@
 {
 	"title": "GEM TD",
-	"types": [
-		{
-			"type": "EMERALD",
-			"name": "Emerald"
-		},
-		{
-			"type": "TOPAZ",
-			"name": "Topaz"
-		},
-		{
-			"type": "RUBY",
-			"name": "Ruby"
-		},
-		{
-			"type": "AMETHYST",
-			"name": "Amethyst"
-		},
-		{
-			"type": "SAPPHIRE",
-			"name": "Sapphire"
-		},
-		{
-			"type": "AQUAMARINE",
-			"name": "Aquamarine"
-		},
-		{
-			"type": "DIAMOND",
-			"name": "Diamond"
-		},
-		{
-			"type": "OPAL",
-			"name": "Opal"
-		}
-	],
 	"levels": [
 		{
 			"value": 1,
@@ -64,6 +30,143 @@
 			"value": 6,
 			"type": "GREAT",
 			"name": "Great"
+		}
+	],
+	"types": [
+		{
+			"type": "EMERALD",
+			"name": "Emerald",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "TOPAZ",
+			"name": "Topaz",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "RUBY",
+			"name": "Ruby",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "AMETHYST",
+			"name": "Amethyst",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "SAPPHIRE",
+			"name": "Sapphire",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "AQUAMARINE",
+			"name": "Aquamarine",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "DIAMOND",
+			"name": "Diamond",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "OPAL",
+			"name": "Opal",
+			"primitive": true,
+			"isSlate": false,
+			"requirements": null
+		},
+		{
+			"type": "ANCIENT_SLATE",
+			"name": "Ancient",
+			"primitive": false,
+			"isSlate": true,
+			"requirements": [
+				{
+					"type": "HOLD_SLATE",
+					"level": null
+				},
+				{
+					"type":"AIR_SLATE",
+					"level": null
+				}]
+		},
+		{
+			"type": "WRAITH_SLATE",
+			"name": "Wraih",
+			"primitive": false,
+			"isSlate": true,
+			"requirements": [
+				{
+					"type": "OPAL_VEIN_SLATE",
+					"level": null
+				},
+				{
+					"type": "SLOW_SLATE",
+					"level": null
+				}]
+		},
+		{
+			"type": "ELDER_SLATE",
+			"name": "Elder",
+			"primitive": false,
+			"isSlate": true,
+			"requirements": [
+				{
+					"type": "SPELL_SLATE",
+					"level": null
+				},
+				{
+					"type": "POISON_SLATE",
+					"level": null
+				}]
+		},
+		{
+			"type": "VIPER_SLATE_SLATE",
+			"name": "Viper",
+			"primitive": false,
+			"isSlate": true,
+			"requirements": [
+				{
+					"type": "DAMAGE_SLATE",
+					"level": null
+				},
+				{
+					"type": "RANGE_SLATE",
+					"level": null
+				}]
+		},
+		{
+			"type": "AIR_SLATE",
+			"name": "Air",
+			"primitive": false,
+			"isSlate": true,
+			"requirements": [
+				{
+					"type": "EMERALD",
+					"level": "FLAWED"
+				},
+				{
+					"type": "OPAL",
+					"level": "FLAWED"
+				},
+				{
+					"type": "RUBY",
+					"level": "FLAWED"
+				}] // initialize.j -> ROW 50
 		}
 	]
 }
