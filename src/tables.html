@@ -83,15 +83,14 @@
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<thead>
 										<tr>
+											<th></th>
 											<th>Name</th>
-											<th>Position</th>
-											<th>Office</th>
-											<th>Age</th>
-											<th>Start date</th>
-											<th>Salary</th>
+											<th>Type</th>
+											<th>Subtype</th>
 										</tr>
 									</thead>
-									<tfoot>
+									<tbody id="table-content"></tbody>
+									<!--<tfoot>
 										<tr>
 											<th>Name</th>
 											<th>Position</th>
@@ -100,7 +99,7 @@
 											<th>Start date</th>
 											<th>Salary</th>
 										</tr>
-									</tfoot>
+									</tfoot>-->
 								</table>
 							</div>
 						</div>
@@ -164,9 +163,32 @@
 	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-	<!-- Page level custom scripts -->
-	<script src="js/demo/datatables-demo.js"></script>
+	<script>
+		$(function () {
+			var tableContent = $("#table-content");
 
+			$.getJSON("gems.json")
+				.done(function (data) {
+					tableContent.empty();
+
+					for (var i = 0; i < data.gems.types.length; i++) {
+						var type = data.gems.types[i];
+
+						var tr = $("<tr />");
+						var td0 = $("<td><img src='gems/" + type.type + "_" + type.subType + ".png' /></td>");
+						var td1 = $("<td>" + type.name + "</td>");
+						var td2 = $("<td>" + type.type + "</td>");
+						var td3 = $("<td>" + type.subType + "</td>");
+
+						td0.appendTo(tr);
+						td1.appendTo(tr);
+						td2.appendTo(tr);
+						td3.appendTo(tr);
+						tr.appendTo(tableContent);
+					}
+				});
+		});
+	</script>
 </body>
 
 </html>
