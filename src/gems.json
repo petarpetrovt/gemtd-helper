@@ -43,7 +43,7 @@
 				"name": "Slate"
 			},
 			{
-				"type": "Special",
+				"type": "SPECIAL",
 				"name": "Special"
 			}
 		],
@@ -387,67 +387,67 @@
 				]
 			},
 			{
-				"type": "ANCIENT_SLATE",
+				"type": "ANCIENT",
 				"subType": "SLATE",
 				"name": "Ancient",
 				"requirements": [
 					{
-						"type": "HOLD_SLATE",
+						"type": "HOLD",
 						"level": null
 					},
 					{
-						"type": "AIR_SLATE",
+						"type": "AIR",
 						"level": null
 					}
 				]
 			},
 			{
-				"type": "WRAITH_SLATE",
+				"type": "WRAITH",
 				"subType": "SLATE",
 				"name": "Wraith",
 				"requirements": [
 					{
-						"type": "OPAL_VEIN_SLATE",
+						"type": "OPAL_VEIN",
 						"level": null
 					},
 					{
-						"type": "SLOW_SLATE",
+						"type": "SLOW",
 						"level": null
 					}
 				]
 			},
 			{
-				"type": "ELDER_SLATE",
+				"type": "ELDER",
 				"subType": "SLATE",
 				"name": "Elder",
 				"requirements": [
 					{
-						"type": "SPELL_SLATE",
+						"type": "SPELL",
 						"level": null
 					},
 					{
-						"type": "POISON_SLATE",
+						"type": "POISON",
 						"level": null
 					}
 				]
 			},
 			{
-				"type": "VIPER_SLATE_SLATE",
+				"type": "VIPER",
 				"subType": "SLATE",
 				"name": "Viper",
 				"requirements": [
 					{
-						"type": "DAMAGE_SLATE",
+						"type": "DAMAGE",
 						"level": null
 					},
 					{
-						"type": "RANGE_SLATE",
+						"type": "RANGE",
 						"level": null
 					}
 				]
 			},
 			{
-				"type": "AIR_SLATE",
+				"type": "AIR",
 				"subType": "SLATE",
 				"name": "Air",
 				"requirements": [
@@ -466,7 +466,7 @@
 				]
 			},
 			{
-				"type": "SPELL_SLATE",
+				"type": "SPELL",
 				"subType": "SLATE",
 				"name": "Spell",
 				"requirements": [
@@ -485,7 +485,7 @@
 				]
 			},
 			{
-				"type": "DAMAGE_SLATE",
+				"type": "DAMAGE",
 				"subType": "SLATE",
 				"name": "Damage",
 				"requirements": [
@@ -504,7 +504,7 @@
 				]
 			},
 			{
-				"type": "POISON_SLATE",
+				"type": "POISON",
 				"subType": "SLATE",
 				"name": "Poison",
 				"requirements": [
@@ -527,7 +527,7 @@
 				]
 			},
 			{
-				"type": "OPAL_VEIN_SLATE",
+				"type": "OPAL_VEIN",
 				"subType": "SLATE",
 				"name": "Opal vein",
 				"requirements": [
@@ -546,7 +546,7 @@
 				]
 			},
 			{
-				"type": "RANGE_SLATE",
+				"type": "RANGE",
 				"subType": "SLATE",
 				"name": "Range",
 				"requirements": [
@@ -569,7 +569,7 @@
 				]
 			},
 			{
-				"type": "SLOW_SLATE",
+				"type": "SLOW",
 				"subType": "SLATE",
 				"name": "Slow",
 				"requirements": [
@@ -592,7 +592,7 @@
 				]
 			},
 			{
-				"type": "HOLD_SLATE",
+				"type": "HOLD",
 				"subType": "SLATE",
 				"name": "Hold",
 				"requirements": [

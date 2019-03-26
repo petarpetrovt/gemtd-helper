@@ -1,0 +1,8 @@
+/.vs
+/.vscode
+/*.suo
+/.deploy
+bin/
+obj/
+BenchmarkDotNet.Artifacts/
+node_modules/
