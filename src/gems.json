@@ -97,6 +97,45 @@
 				"requirements": null
 			},
 			{
+				"type": "STONE_OF_BRYVX",
+				"subType": "SPECIAL",
+				"name": "Stone of Bryvx",
+				"requirements": [
+					{
+						"type": "EMERALD",
+						"level": "PERFECT"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "PERFECT"
+					},
+					{
+						"type": "RUBY",
+						"level": "PERFECT"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "PERFECT"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "PERFECT"
+					},
+					{
+						"type": "AQUAMARINE",
+						"level": "PERFECT"
+					},
+					{
+						"type": "DIAMOND",
+						"level": "PERFECT"
+					},
+					{
+						"type": "OPAL",
+						"level": "PERFECT"
+					}
+				]
+			},
+			{
 				"type": "MALACHITE",
 				"subType": "SPECIAL",
 				"name": "Malachite",
