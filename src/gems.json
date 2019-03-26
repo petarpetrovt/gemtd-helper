@@ -1,172 +1,576 @@
 {
 	"title": "GEM TD",
-	"levels": [
-		{
-			"value": 1,
-			"type": "CHIPPED",
-			"name": "Chipped"
-		},
-		{
-			"value": 2,
-			"type": "FLAWED",
-			"name": "Flawed"
-		},
-		{
-			"value": 3,
-			"type": "NORMAL",
-			"name": "Normal"
-		},
-		{
-			"value": 4,
-			"type": "FLAWLESS",
-			"name": "Flawless"
-		},
-		{
-			"value": 5,
-			"type": "PERFECT",
-			"name": "Perfect"
-		},
-		{
-			"value": 6,
-			"type": "GREAT",
-			"name": "Great"
-		}
-	],
-	"types": [
-		{
-			"type": "EMERALD",
-			"name": "Emerald",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "TOPAZ",
-			"name": "Topaz",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "RUBY",
-			"name": "Ruby",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "AMETHYST",
-			"name": "Amethyst",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "SAPPHIRE",
-			"name": "Sapphire",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "AQUAMARINE",
-			"name": "Aquamarine",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "DIAMOND",
-			"name": "Diamond",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "OPAL",
-			"name": "Opal",
-			"primitive": true,
-			"isSlate": false,
-			"requirements": null
-		},
-		{
-			"type": "ANCIENT_SLATE",
-			"name": "Ancient",
-			"primitive": false,
-			"isSlate": true,
-			"requirements": [
-				{
-					"type": "HOLD_SLATE",
-					"level": null
-				},
-				{
-					"type":"AIR_SLATE",
-					"level": null
-				}]
-		},
-		{
-			"type": "WRAITH_SLATE",
-			"name": "Wraih",
-			"primitive": false,
-			"isSlate": true,
-			"requirements": [
-				{
-					"type": "OPAL_VEIN_SLATE",
-					"level": null
-				},
-				{
-					"type": "SLOW_SLATE",
-					"level": null
-				}]
-		},
-		{
-			"type": "ELDER_SLATE",
-			"name": "Elder",
-			"primitive": false,
-			"isSlate": true,
-			"requirements": [
-				{
-					"type": "SPELL_SLATE",
-					"level": null
-				},
-				{
-					"type": "POISON_SLATE",
-					"level": null
-				}]
-		},
-		{
-			"type": "VIPER_SLATE_SLATE",
-			"name": "Viper",
-			"primitive": false,
-			"isSlate": true,
-			"requirements": [
-				{
-					"type": "DAMAGE_SLATE",
-					"level": null
-				},
-				{
-					"type": "RANGE_SLATE",
-					"level": null
-				}]
-		},
-		{
-			"type": "AIR_SLATE",
-			"name": "Air",
-			"primitive": false,
-			"isSlate": true,
-			"requirements": [
-				{
-					"type": "EMERALD",
-					"level": "FLAWED"
-				},
-				{
-					"type": "OPAL",
-					"level": "FLAWED"
-				},
-				{
-					"type": "RUBY",
-					"level": "FLAWED"
-				}] // initialize.j -> ROW 50
-		}
-	]
+	"gems": {
+		"levels": [
+			{
+				"value": 1,
+				"type": "CHIPPED",
+				"name": "Chipped"
+			},
+			{
+				"value": 2,
+				"type": "FLAWED",
+				"name": "Flawed"
+			},
+			{
+				"value": 3,
+				"type": "NORMAL",
+				"name": "Normal"
+			},
+			{
+				"value": 4,
+				"type": "FLAWLESS",
+				"name": "Flawless"
+			},
+			{
+				"value": 5,
+				"type": "PERFECT",
+				"name": "Perfect"
+			},
+			{
+				"value": 6,
+				"type": "GREAT",
+				"name": "Great"
+			}
+		],
+		"subTypes": [
+			{
+				"type": "BASIC",
+				"name": "Basic"
+			},
+			{
+				"type": "SLATE",
+				"name": "Slate"
+			},
+			{
+				"type": "Special",
+				"name": "Special"
+			}
+		],
+		"types": [
+			{
+				"type": "EMERALD",
+				"subType": "BASIC",
+				"name": "Emerald",
+				"requirements": null
+			},
+			{
+				"type": "TOPAZ",
+				"subType": "BASIC",
+				"name": "Topaz",
+				"requirements": null
+			},
+			{
+				"type": "RUBY",
+				"subType": "BASIC",
+				"name": "Ruby",
+				"requirements": null
+			},
+			{
+				"type": "AMETHYST",
+				"subType": "BASIC",
+				"name": "Amethyst",
+				"requirements": null
+			},
+			{
+				"type": "SAPPHIRE",
+				"subType": "BASIC",
+				"name": "Sapphire",
+				"requirements": null
+			},
+			{
+				"type": "AQUAMARINE",
+				"subType": "BASIC",
+				"name": "Aquamarine",
+				"requirements": null
+			},
+			{
+				"type": "DIAMOND",
+				"subType": "BASIC",
+				"name": "Diamond",
+				"requirements": null
+			},
+			{
+				"type": "OPAL",
+				"subType": "BASIC",
+				"name": "Opal",
+				"requirements": null
+			},
+			{
+				"type": "MALACHITE",
+				"subType": "SPECIAL",
+				"name": "Malachite",
+				"requirements": [
+					{
+						"type": "AQUAMARINE",
+						"level": "CHIPPED"
+					},
+					{
+						"type": "EMERALD",
+						"level": "CHIPPED"
+					},
+					{
+						"type": "OPAL",
+						"level": "CHIPPED"
+					}
+				]
+			},
+			{
+				"type": "SILVER",
+				"subType": "SPECIAL",
+				"name": "Silver",
+				"requirements": [
+					{
+						"type": "DIAMOND",
+						"level": "CHIPPED"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "CHIPPED"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "CHIPPED"
+					}
+				]
+			},
+			{
+				"type": "STAR_RUBY",
+				"subType": "SPECIAL",
+				"name": "Star ruby",
+				"requirements": [
+					{
+						"type": "RUBY",
+						"level": "FLAWED"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "CHIPPED"
+					},
+					{
+						"type": "RUBY",
+						"level": "CHIPPED"
+					}
+				]
+			},
+			{
+				"type": "JADE",
+				"subType": "SPECIAL",
+				"name": "Jade",
+				"requirements": [
+					{
+						"type": "EMERALD",
+						"level": "NORMAL"
+					},
+					{
+						"type": "OPAL",
+						"level": "NORMAL"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "RED_CRYSTAL",
+				"subType": "SPECIAL",
+				"name": "Red crystal",
+				"requirements": [
+					{
+						"type": "EMERALD",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "RUBY",
+						"level": "NORMAL"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "DARK_EMERALD",
+				"subType": "SPECIAL",
+				"name": "Dark emerald",
+				"requirements": [
+					{
+						"type": "EMERALD",
+						"level": "PERFECT"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "GOLD",
+				"subType": "SPECIAL",
+				"name": "Gold",
+				"requirements": [
+					{
+						"type": "AMETHYST",
+						"level": "PERFECT"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "DIAMOND",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "URANIUM",
+				"subType": "SPECIAL",
+				"name": "Uranium",
+				"requirements": [
+					{
+						"type": "TOPAZ",
+						"level": "PERFECT"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "NORMAL"
+					},
+					{
+						"type": "OPAL",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "PINK_DIAMOND",
+				"subType": "SPECIAL",
+				"name": "Pink diamond",
+				"requirements": [
+					{
+						"type": "DIAMOND",
+						"level": "PERFECT"
+					},
+					{
+						"type": "DIAMOND",
+						"level": "NORMAL"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "NORMAL"
+					}
+				]
+			},
+			{
+				"type": "PARAIBA_TOURMALINE",
+				"subType": "SPECIAL",
+				"name": "Paraiba tourmaline",
+				"requirements": [
+					{
+						"type": "AQUAMARINE",
+						"level": "PERFECT"
+					},
+					{
+						"type": "OPAL",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "AQUAMARINE",
+						"level": "FLAWED"
+					},
+					{
+						"type": "EMERALD",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "BLACK_OPAL",
+				"subType": "SPECIAL",
+				"name": "Black opal",
+				"requirements": [
+					{
+						"type": "OPAL",
+						"level": "PERFECT"
+					},
+					{
+						"type": "DIAMOND",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "AQUAMARINE",
+						"level": "NORMAL"
+					}
+				]
+			},
+			{
+				"type": "BLOODSTONE",
+				"subType": "SPECIAL",
+				"name": "Bloodstone",
+				"requirements": [
+					{
+						"type": "RUBY",
+						"level": "PERFECT"
+					},
+					{
+						"type": "AQUAMARINE",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "NORMAL"
+					}
+				]
+			},
+			{
+				"type": "YELLOW_SAPPHIRE",
+				"subType": "SPECIAL",
+				"name": "Yellow sapphire",
+				"requirements": [
+					{
+						"type": "SAPPHIRE",
+						"level": "PERFECT"
+					},
+					{
+						"type": "RUBY",
+						"level": "FLAWLESS"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "FLAWLESS"
+					}
+				]
+			},
+			{
+				"type": "ANCIENT_SLATE",
+				"subType": "SLATE",
+				"name": "Ancient",
+				"requirements": [
+					{
+						"type": "HOLD_SLATE",
+						"level": null
+					},
+					{
+						"type": "AIR_SLATE",
+						"level": null
+					}
+				]
+			},
+			{
+				"type": "WRAITH_SLATE",
+				"subType": "SLATE",
+				"name": "Wraith",
+				"requirements": [
+					{
+						"type": "OPAL_VEIN_SLATE",
+						"level": null
+					},
+					{
+						"type": "SLOW_SLATE",
+						"level": null
+					}
+				]
+			},
+			{
+				"type": "ELDER_SLATE",
+				"subType": "SLATE",
+				"name": "Elder",
+				"requirements": [
+					{
+						"type": "SPELL_SLATE",
+						"level": null
+					},
+					{
+						"type": "POISON_SLATE",
+						"level": null
+					}
+				]
+			},
+			{
+				"type": "VIPER_SLATE_SLATE",
+				"subType": "SLATE",
+				"name": "Viper",
+				"requirements": [
+					{
+						"type": "DAMAGE_SLATE",
+						"level": null
+					},
+					{
+						"type": "RANGE_SLATE",
+						"level": null
+					}
+				]
+			},
+			{
+				"type": "AIR_SLATE",
+				"subType": "SLATE",
+				"name": "Air",
+				"requirements": [
+					{
+						"type": "EMERALD",
+						"level": "FLAWED"
+					},
+					{
+						"type": "OPAL",
+						"level": "FLAWED"
+					},
+					{
+						"type": "RUBY",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "SPELL_SLATE",
+				"subType": "SLATE",
+				"name": "Spell",
+				"requirements": [
+					{
+						"type": "AQUAMARINE",
+						"level": "NORMAL"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "FLAWED"
+					},
+					{
+						"type": "DIAMOND",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "DAMAGE_SLATE",
+				"subType": "SLATE",
+				"name": "Damage",
+				"requirements": [
+					{
+						"type": "DIAMOND",
+						"level": "NORMAL"
+					},
+					{
+						"type": "OPAL",
+						"level": "FLAWED"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "POISON_SLATE",
+				"subType": "SLATE",
+				"name": "Poison",
+				"requirements": [
+					{
+						"type": "EMERALD",
+						"level": "NORMAL"
+					},
+					{
+						"type": "AQUAMARINE",
+						"level": "FLAWED"
+					},
+					{
+						"type": "OPAL",
+						"level": "FLAWED"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "OPAL_VEIN_SLATE",
+				"subType": "SLATE",
+				"name": "Opal vein",
+				"requirements": [
+					{
+						"type": "OPAL",
+						"level": "NORMAL"
+					},
+					{
+						"type": "RUBY",
+						"level": "FLAWED"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "RANGE_SLATE",
+				"subType": "SLATE",
+				"name": "Range",
+				"requirements": [
+					{
+						"type": "RUBY",
+						"level": "NORMAL"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "FLAWED"
+					},
+					{
+						"type": "RUBY",
+						"level": "FLAWED"
+					},
+					{
+						"type": "TOPAZ",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "SLOW_SLATE",
+				"subType": "SLATE",
+				"name": "Slow",
+				"requirements": [
+					{
+						"type": "SAPPHIRE",
+						"level": "NORMAL"
+					},
+					{
+						"type": "AQUAMARINE",
+						"level": "FLAWED"
+					},
+					{
+						"type": "DIAMOND",
+						"level": "FLAWED"
+					},
+					{
+						"type": "EMERALD",
+						"level": "FLAWED"
+					}
+				]
+			},
+			{
+				"type": "HOLD_SLATE",
+				"subType": "SLATE",
+				"name": "Hold",
+				"requirements": [
+					{
+						"type": "TOPAZ",
+						"level": "NORMAL"
+					},
+					{
+						"type": "AMETHYST",
+						"level": "FLAWED"
+					},
+					{
+						"type": "SAPPHIRE",
+						"level": "FLAWED"
+					}
+				]
+			}
+		]
+	}
 }
