@@ -1,20 +1,51 @@
 "use strict";
-var GemLevel;
-(function (GemLevel) {
-    GemLevel["CHIPPED"] = "CHIPPED";
-    GemLevel["FLAWED"] = "FLAWED";
-    GemLevel["NORMAL"] = "NORMAL";
-    GemLevel["FLAWLESS"] = "FLAWLESS";
-    GemLevel["PERFECT"] = "PERFECT";
-    GemLevel["GREAT"] = "GREAT";
-})(GemLevel || (GemLevel = {}));
-var GemSubType;
-(function (GemSubType) {
-    GemSubType["BASIC"] = "BASIC";
-    GemSubType["SLATE"] = "SLATE";
-    GemSubType["SPECIAL"] = "SPECIAL";
-})(GemSubType || (GemSubType = {}));
+Object.defineProperty(exports, "__esModule", { value: true });
+var gem_1 = require("./gem");
 $(function () {
+    // Toggle the side navigation
+    $("#sidebarToggle, #sidebarToggleTop").on('click', function (e) {
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+        if ($(".sidebar").hasClass("toggled")) {
+            $('.sidebar .collapse').collapse('hide');
+        }
+        ;
+    });
+    // Close any open menu accordions when window is resized below 768px
+    $(window).resize(function () {
+        if ($(window).width() < 768) {
+            $('.sidebar .collapse').collapse('hide');
+        }
+        ;
+    });
+    // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+    $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function (e) {
+        if ($(window).width() > 768) {
+            var e0 = e.originalEvent, delta = e0.wheelDelta || -e0.detail;
+            this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+            e.preventDefault();
+        }
+    });
+    // Scroll to top button appear
+    $(document).on('scroll', function () {
+        var scrollDistance = $(this).scrollTop();
+        if (scrollDistance && scrollDistance > 100) {
+            $('.scroll-to-top').fadeIn();
+        }
+        else {
+            $('.scroll-to-top').fadeOut();
+        }
+    });
+    // Smooth scrolling using jQuery easing
+    $(document).on('click', 'a.scroll-to-top', function (e) {
+        var $anchor = $(this);
+        var href = $anchor.attr('href');
+        var $href = $(href);
+        $('html, body').stop().animate({
+            scrollTop: $href.offset().top
+        }, 1000, 'easeInOutExpo');
+        e.preventDefault();
+    });
     var tableContent = $("#table-content");
     $.getJSON("gems.json")
         .done(function (data) {
@@ -23,15 +54,15 @@ $(function () {
             var type = data.gems.types[i];
             var url = type.type;
             switch (type.subType) {
-                case GemSubType.BASIC: {
-                    url += "_" + GemLevel.NORMAL;
+                case gem_1.GemSubType.BASIC: {
+                    url += "_" + gem_1.GemLevel.NORMAL;
                     break;
                 }
-                case GemSubType.SLATE: {
-                    url += "_" + GemSubType.SLATE;
+                case gem_1.GemSubType.SLATE: {
+                    url += "_" + gem_1.GemSubType.SLATE;
                     break;
                 }
-                case GemSubType.SPECIAL: {
+                case gem_1.GemSubType.SPECIAL: {
                     break;
                 }
             }
