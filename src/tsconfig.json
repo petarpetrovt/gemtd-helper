@@ -1,5 +1,4 @@
 {
-	"compileOnSave": false,
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
 		"emitDecoratorMetadata": true,
@@ -17,7 +16,10 @@
 		"strict": true,
 		"strictNullChecks": false,
 		"suppressImplicitAnyIndexErrors": false,
-		"target": "es5",
-		"outDir": "./dist"
-	}
+		"target": "es5"
+	},
+	"exclude": [
+		"bin",
+		"node_modules"
+	]
 }

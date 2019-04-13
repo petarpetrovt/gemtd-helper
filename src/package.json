@@ -11,7 +11,16 @@
 		"@types/node": "^11.11.8",
 		"@types/npm": "^2.0.30",
 		"@types/serve-static": "^1.13.2",
-		"typescript-bundle": "^1.0.12"
+		"awesome-typescript-loader": "^5.2.1",
+		"clean-webpack-plugin": "^2.0.1",
+		"css-loader": "^2.1.1",
+		"mini-css-extract-plugin": "^0.6.0",
+		"optimize-css-assets-webpack-plugin": "^5.0.1",
+		"terser-webpack-plugin": "^1.2.3",
+		"typescript": "^3.4.3",
+		"url-loader": "^1.1.2",
+		"webpack": "^4.30.0",
+		"webpack-cli": "^3.3.0"
 	},
 	"dependencies": {
 		"connect": "^3.6.6",
@@ -19,8 +28,7 @@
 		"serve-static": "^1.13.2"
 	},
 	"scripts": {
-		"preinstall": "npm install -g typescript",
-		"prestart": "node .\node_modules\typescript-bundle\tsc-bundle .\tsconfig.json"
+		"prestart": "node .\\node_modules\\webpack-cli\\bin\\cli.js"
 	},
 	"repository": {
 		"type": "git",

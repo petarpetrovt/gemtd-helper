@@ -1,4 +1,5 @@
-import * as v154 from "../data/v1.5.4";
+import "../styles/site.css";
+import * as v154 from "../data/v1.5.4/types";
 
 export interface IHomeItemViewModel {
 	type: string;
@@ -41,7 +42,7 @@ $(function () {
 				const item: IHomeItemViewModel = {
 					type: type.name,
 					subType: subType.name,
-					url: `/data/${v154.ImagesPath}/${url}.png`
+					url: `/data/${v154.DataImagesPath}/${url}.png`
 				};
 
 				items.push(item);
