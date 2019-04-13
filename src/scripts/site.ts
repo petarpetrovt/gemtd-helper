@@ -1,3 +1,5 @@
+import "jquery";
+import "bootstrap";
 import * as v154 from "../data/v1.5.4";
 
 $(function () {

@@ -18,10 +18,6 @@
 		"strictNullChecks": false,
 		"suppressImplicitAnyIndexErrors": false,
 		"target": "es5",
-		"outDir": "./dist/"
-	},
-	"include": [
-		"./data/**/*.ts",
-		"./js/site.ts"
-	]
+		"outDir": "./scripts/"
+	}
 }
