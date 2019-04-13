@@ -4,6 +4,9 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>GemTDHelper.Web</Name>
     <RootNamespace>GemTDHelper.Web</RootNamespace>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -29,9 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="css\" />
-    <Folder Include="gems\" />
+    <Folder Include="data\v1.5.4\" />
+    <Folder Include="data\v1.5.4\images\" />
     <Folder Include="js\" />
-    <Folder Include="js\gem\" />
+    <Folder Include="data\" />
+    <Folder Include="images\" />
     <Folder Include="vendor\" />
     <Folder Include="vendor\bootstrap\" />
     <Folder Include="vendor\bootstrap\js\" />
@@ -39,8 +44,6 @@
     <Folder Include="vendor\bootstrap\scss\mixins\" />
     <Folder Include="vendor\bootstrap\scss\utilities\" />
     <Folder Include="vendor\bootstrap\scss\vendor\" />
-    <Folder Include="vendor\chart.js\" />
-    <Folder Include="vendor\datatables\" />
     <Folder Include="vendor\fontawesome-free\" />
     <Folder Include="vendor\fontawesome-free\css\" />
     <Folder Include="vendor\fontawesome-free\js\" />
@@ -56,74 +59,74 @@
     <Folder Include="vendor\jquery\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\sb-admin-2.min.css" />
-    <Content Include="gems.json" />
-    <Content Include="gems\AIR_SLATE.png" />
-    <Content Include="gems\AMETHYST_CHIPPED.png" />
-    <Content Include="gems\AMETHYST_FLAWED.png" />
-    <Content Include="gems\AMETHYST_FLAWLESS.png" />
-    <Content Include="gems\AMETHYST_NORMAL.png" />
-    <Content Include="gems\AMETHYST_PERFECT.png" />
-    <Content Include="gems\ANCIENT_SLATE.png" />
-    <Content Include="gems\AQUAMARINE_CHIPPED.png" />
-    <Content Include="gems\AQUAMARINE_FLAWED.png" />
-    <Content Include="gems\AQUAMARINE_FLAWLESS.png" />
-    <Content Include="gems\AQUAMARINE_NORMAL.png" />
-    <Content Include="gems\AQUAMARINE_PERFECT.png" />
-    <Content Include="gems\BLACK_OPAL.png" />
-    <Content Include="gems\BLOODSTONE.png" />
-    <Content Include="gems\DAMAGE_SLATE.png" />
-    <Content Include="gems\DARK_EMERALD.png" />
-    <Content Include="gems\DIAMOND_CHIPPED.png" />
-    <Content Include="gems\DIAMOND_FLAWED.png" />
-    <Content Include="gems\DIAMOND_FLAWLESS.png" />
-    <Content Include="gems\DIAMOND_NORMAL.png" />
-    <Content Include="gems\DIAMOND_PERFECT.png" />
-    <Content Include="gems\ELDER_SLATE.png" />
-    <Content Include="gems\EMERALD_CHIPPED.png" />
-    <Content Include="gems\EMERALD_FLAWED.png" />
-    <Content Include="gems\EMERALD_FLAWLESS.png" />
-    <Content Include="gems\EMERALD_NORMAL.png" />
-    <Content Include="gems\EMERALD_PERFECT.png" />
-    <Content Include="gems\GOLD.png" />
-    <Content Include="gems\HOLD_SLATE.png" />
-    <Content Include="gems\JADE.png" />
-    <Content Include="gems\MALACHITE.png" />
-    <Content Include="gems\OPAL_CHIPPED.png" />
-    <Content Include="gems\OPAL_FLAWED.png" />
-    <Content Include="gems\OPAL_FLAWLESS.png" />
-    <Content Include="gems\OPAL_NORMAL.png" />
-    <Content Include="gems\OPAL_PERFECT.png" />
-    <Content Include="gems\OPAL_VEIN_SLATE.png" />
-    <Content Include="gems\PARAIBA_TOURMALINE.png" />
-    <Content Include="gems\PINK_DIAMOND.png" />
-    <Content Include="gems\POISON_SLATE.png" />
-    <Content Include="gems\RANGE_SLATE.png" />
-    <Content Include="gems\RED_CRYSTAL.png" />
-    <Content Include="gems\RUBY_CHIPPED.png" />
-    <Content Include="gems\RUBY_FLAWED.png" />
-    <Content Include="gems\RUBY_FLAWLESS.png" />
-    <Content Include="gems\RUBY_NORMAL.png" />
-    <Content Include="gems\RUBY_PERFECT.png" />
-    <Content Include="gems\SAPPHIRE_CHIPPED.png" />
-    <Content Include="gems\SAPPHIRE_FLAWED.png" />
-    <Content Include="gems\SAPPHIRE_FLAWLESS.png" />
-    <Content Include="gems\SAPPHIRE_NORMAL.png" />
-    <Content Include="gems\SAPPHIRE_PERFECT.png" />
-    <Content Include="gems\SILVER.png" />
-    <Content Include="gems\SLOW_SLATE.png" />
-    <Content Include="gems\SPELL_SLATE.png" />
-    <Content Include="gems\STAR_RUBY.png" />
-    <Content Include="gems\STONE_OF_BRYVX.png" />
-    <Content Include="gems\TOPAZ_CHIPPED.png" />
-    <Content Include="gems\TOPAZ_FLAWED.png" />
-    <Content Include="gems\TOPAZ_FLAWLESS.png" />
-    <Content Include="gems\TOPAZ_NORMAL.png" />
-    <Content Include="gems\TOPAZ_PERFECT.png" />
-    <Content Include="gems\URANIUM.png" />
-    <Content Include="gems\VIPER_SLATE.png" />
-    <Content Include="gems\WRAITH_SLATE.png" />
-    <Content Include="gems\YELLOW_SAPPHIRE.png" />
+    <Content Include="css\styles.min.css" />
+    <Content Include="data\v1.5.4\data.json" />
+    <Content Include="data\v1.5.4\images\AIR_SLATE.png" />
+    <Content Include="data\v1.5.4\images\AMETHYST_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\AMETHYST_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\AMETHYST_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\AMETHYST_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\AMETHYST_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\ANCIENT_SLATE.png" />
+    <Content Include="data\v1.5.4\images\AQUAMARINE_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\AQUAMARINE_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\AQUAMARINE_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\AQUAMARINE_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\AQUAMARINE_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\BLACK_OPAL.png" />
+    <Content Include="data\v1.5.4\images\BLOODSTONE.png" />
+    <Content Include="data\v1.5.4\images\DAMAGE_SLATE.png" />
+    <Content Include="data\v1.5.4\images\DARK_EMERALD.png" />
+    <Content Include="data\v1.5.4\images\DIAMOND_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\DIAMOND_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\DIAMOND_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\DIAMOND_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\DIAMOND_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\ELDER_SLATE.png" />
+    <Content Include="data\v1.5.4\images\EMERALD_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\EMERALD_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\EMERALD_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\EMERALD_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\EMERALD_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\GOLD.png" />
+    <Content Include="data\v1.5.4\images\HOLD_SLATE.png" />
+    <Content Include="data\v1.5.4\images\JADE.png" />
+    <Content Include="data\v1.5.4\images\MALACHITE.png" />
+    <Content Include="data\v1.5.4\images\OPAL_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\OPAL_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\OPAL_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\OPAL_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\OPAL_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\OPAL_VEIN_SLATE.png" />
+    <Content Include="data\v1.5.4\images\PARAIBA_TOURMALINE.png" />
+    <Content Include="data\v1.5.4\images\PINK_DIAMOND.png" />
+    <Content Include="data\v1.5.4\images\POISON_SLATE.png" />
+    <Content Include="data\v1.5.4\images\RANGE_SLATE.png" />
+    <Content Include="data\v1.5.4\images\RED_CRYSTAL.png" />
+    <Content Include="data\v1.5.4\images\RUBY_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\RUBY_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\RUBY_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\RUBY_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\RUBY_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\SAPPHIRE_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\SAPPHIRE_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\SAPPHIRE_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\SAPPHIRE_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\SAPPHIRE_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\SILVER.png" />
+    <Content Include="data\v1.5.4\images\SLOW_SLATE.png" />
+    <Content Include="data\v1.5.4\images\SPELL_SLATE.png" />
+    <Content Include="data\v1.5.4\images\STAR_RUBY.png" />
+    <Content Include="data\v1.5.4\images\STONE_OF_BRYVX.png" />
+    <Content Include="data\v1.5.4\images\TOPAZ_CHIPPED.png" />
+    <Content Include="data\v1.5.4\images\TOPAZ_FLAWED.png" />
+    <Content Include="data\v1.5.4\images\TOPAZ_FLAWLESS.png" />
+    <Content Include="data\v1.5.4\images\TOPAZ_NORMAL.png" />
+    <Content Include="data\v1.5.4\images\TOPAZ_PERFECT.png" />
+    <Content Include="data\v1.5.4\images\URANIUM.png" />
+    <Content Include="data\v1.5.4\images\VIPER_SLATE.png" />
+    <Content Include="data\v1.5.4\images\WRAITH_SLATE.png" />
+    <Content Include="data\v1.5.4\images\YELLOW_SAPPHIRE.png" />
     <Content Include="index.html" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
@@ -221,8 +224,6 @@
     <Content Include="vendor\bootstrap\scss\_type.scss" />
     <Content Include="vendor\bootstrap\scss\_utilities.scss" />
     <Content Include="vendor\bootstrap\scss\_variables.scss" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.css" />
-    <Content Include="vendor\datatables\dataTables.bootstrap4.min.css" />
     <Content Include="vendor\fontawesome-free\css\all.css" />
     <Content Include="vendor\fontawesome-free\css\all.min.css" />
     <Content Include="vendor\fontawesome-free\css\brands.css" />
@@ -1800,29 +1801,11 @@
     <Content Include="vendor\jquery\jquery.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="js\gem\GemLevel.js" />
-    <Compile Include="js\gem\GemLevelObj.js" />
-    <Compile Include="js\gem\GemRequirement.js" />
-    <Compile Include="js\gem\Gems.js" />
-    <Compile Include="js\gem\GemsJSON.js" />
-    <Compile Include="js\gem\GemSubType.js" />
-    <Compile Include="js\gem\GemSubTypeObj.js" />
-    <Compile Include="js\gem\GemTypeObj.js" />
-    <Compile Include="js\gem\index.js" />
-    <Compile Include="js\site.js" />
     <Compile Include="server.js" />
     <Compile Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Compile Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Compile Include="vendor\bootstrap\js\bootstrap.js" />
     <Compile Include="vendor\bootstrap\js\bootstrap.min.js" />
-    <Compile Include="vendor\chart.js\Chart.bundle.js" />
-    <Compile Include="vendor\chart.js\Chart.bundle.min.js" />
-    <Compile Include="vendor\chart.js\Chart.js" />
-    <Compile Include="vendor\chart.js\Chart.min.js" />
-    <Compile Include="vendor\datatables\dataTables.bootstrap4.js" />
-    <Compile Include="vendor\datatables\dataTables.bootstrap4.min.js" />
-    <Compile Include="vendor\datatables\jquery.dataTables.js" />
-    <Compile Include="vendor\datatables\jquery.dataTables.min.js" />
     <Compile Include="vendor\fontawesome-free\js\all.js" />
     <Compile Include="vendor\fontawesome-free\js\all.min.js" />
     <Compile Include="vendor\fontawesome-free\js\brands.js" />
@@ -1844,15 +1827,9 @@
     <Compile Include="vendor\jquery\jquery.slim.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="js\gem\GemLevel.ts" />
-    <TypeScriptCompile Include="js\gem\GemLevelObj.ts" />
-    <TypeScriptCompile Include="js\gem\GemRequirement.ts" />
-    <TypeScriptCompile Include="js\gem\Gems.ts" />
-    <TypeScriptCompile Include="js\gem\GemsJSON.ts" />
-    <TypeScriptCompile Include="js\gem\GemSubType.ts" />
-    <TypeScriptCompile Include="js\gem\GemSubTypeObj.ts" />
-    <TypeScriptCompile Include="js\gem\GemTypeObj.ts" />
-    <TypeScriptCompile Include="js\gem\index.ts" />
+    <TypeScriptCompile Include="data\v1.5.4\index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="js\site.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

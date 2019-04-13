@@ -8,12 +8,16 @@
 		"@types/jquery": "^3.3.29",
 		"@types/node": "^11.11.8",
 		"@types/npm": "^2.0.30",
-		"@types/serve-static": "^1.13.2"
+		"@types/serve-static": "^1.13.2",
+		"typescript-bundle": "^1.0.12"
 	},
 	"dependencies": {
 		"connect": "^3.6.6",
 		"serve-static": "^1.13.2",
 		"react-dev-utils": "^5.0.3"
+	},
+	"scripts": {
+		"prestart": "node ./node_modules/typescript-bundle/tsc-bundle ./js/site.ts"
 	},
 	"repository": {
 		"type": "git",
