@@ -35,7 +35,7 @@ export interface GemSubTypeObj {
 export interface GemTypeObj {
 	type: string;
 	subType: GemSubType;
-	name: String;
+	name: string;
 	requirements: GemRequirement;
 }
 

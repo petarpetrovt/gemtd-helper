@@ -4,8 +4,10 @@
 	"description": "Warcraft 3 Gem TD custom map helper.",
 	"main": "server.js",
 	"devDependencies": {
+		"@types/bootstrap": "^4.3.0",
 		"@types/connect": "^3.4.32",
 		"@types/jquery": "^3.3.29",
+		"@types/knockout": "^3.4.64",
 		"@types/node": "^11.11.8",
 		"@types/npm": "^2.0.30",
 		"@types/serve-static": "^1.13.2",
