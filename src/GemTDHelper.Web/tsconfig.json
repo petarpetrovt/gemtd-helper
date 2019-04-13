@@ -1,0 +1,27 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"lib": [
+			"dom",
+			"es2015"
+		],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"skipDefaultLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"strictNullChecks": false,
+		"suppressImplicitAnyIndexErrors": false,
+		"target": "es5",
+		"outDir": "./dist/"
+	},
+	"include": [
+		"./data/**/*.ts",
+		"./js/site.ts"
+	]
+}
