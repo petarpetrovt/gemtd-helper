@@ -18,6 +18,6 @@
 		"strictNullChecks": false,
 		"suppressImplicitAnyIndexErrors": false,
 		"target": "es5",
-		"outDir": "./scripts/"
+		"outDir": "./dist"
 	}
 }
