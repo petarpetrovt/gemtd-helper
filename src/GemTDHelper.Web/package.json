@@ -1,0 +1,36 @@
+{
+	"name": "gemtd-helper",
+	"version": "1.0.0",
+	"description": "Warcraft 3 Gem TD custom map helper.",
+	"main": "server.js",
+	"devDependencies": {
+		"@types/connect": "^3.4.32",
+		"@types/jquery": "^3.3.29",
+		"@types/node": "^11.11.8",
+		"@types/npm": "^2.0.30",
+		"@types/serve-static": "^1.13.2"
+	},
+	"dependencies": {
+		"connect": "^3.6.6",
+		"serve-static": "^1.13.2",
+		"react-dev-utils": "^5.0.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/petarpetrovt/gemtd-helper.git"
+	},
+	"keywords": [
+		"warcraft",
+		"gem",
+		"td",
+		"helper",
+		"map",
+		"custom"
+	],
+	"author": "Petar Petrov",
+	"license": "ISC",
+	"homepage": "https://github.com/petarpetrovt/gemtd-helper#readme",
+	"bugs": {
+		"url": "https://github.com/petarpetrovt/gemtd-helper/issues"
+	}
+}

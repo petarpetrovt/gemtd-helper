@@ -2,6 +2,7 @@
 /.vscode
 /*.suo
 /.deploy
+*.user
 bin/
 obj/
 BenchmarkDotNet.Artifacts/
