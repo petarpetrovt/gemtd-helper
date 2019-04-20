@@ -10,11 +10,14 @@ Warcraft 3 GEM TD Helper
 2. Text editor like [Visual Studio Code](https://code.visualstudio.com/)
 3. [Node.JS](https://nodejs.org/en/) runtime
 
+### Build
+
 ```
 npm install
-npm start
 ```
 
-## Team
+### Run
 
-* Petar Petrov
+```
+npm start
+```
