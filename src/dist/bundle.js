@@ -179,10 +179,28 @@ var HomeViewModel = /** @class */ (function () {
         this.items = ko.observableArray([]);
         this.requirements = ko.observableArray([]);
         this.subTypeValue = ko.observable(null);
+        this.levelValue = ko.observable(_data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL);
         this.selectedItemValue = ko.observable(null);
         this.selectedItemValue.subscribe(function () {
             _this.ensureRequirements();
         });
+        this.selectedItemValueTitle = ko.pureComputed(function () {
+            var selected = _this.selectedItemValue();
+            var result = "Requirements";
+            if (selected) {
+                if (selected.subType == _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC) {
+                    //const levelValue: v154.GemLevel = this.levelValue();
+                    //const level: v154.GemLevelObj = this.data.gems.levels.filter(x => x.type === levelValue)[0];
+                    //result = `Requirements for ${level.name} ${selected.typeName}`;
+                    result = "Requirements for " + selected.typeName;
+                }
+                else {
+                    result = "Requirements for " + selected.typeName;
+                }
+            }
+            return result;
+        });
+        this.levelVisible = ko.pureComputed(function () { return _this.selectedItemValue() && _this.selectedItemValue().subType === _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC; });
         this.searchValue = ko.observable("");
         this.searchValue.subscribe(function () {
             _this.ensureItems();
@@ -198,6 +216,10 @@ var HomeViewModel = /** @class */ (function () {
             this.selectedItemValue(item);
         }
         this.ensureItems();
+    };
+    HomeViewModel.prototype.onFilterLevelClicked = function (level) {
+        this.levelValue(level);
+        this.ensureRequirements();
     };
     HomeViewModel.prototype.onFilterSubTypeClicked = function (subType) {
         if (subType === void 0) { subType = null; }
@@ -229,6 +251,14 @@ var HomeViewModel = /** @class */ (function () {
         var items = [];
         for (var _i = 0, types_1 = types; _i < types_1.length; _i++) {
             var type = types_1[_i];
+            // if (this.subTypeValue() == v154.GemSubType.BASIC) {
+            // 	// TODO: append all levels
+            // 	const levels: v154.GemLevelObj[] = this.data.gems.levels;
+            // 	const newTypes: v154.GemTypeObj[] = [];
+            // 	for (const type of types) {
+            // 	}
+            // 	types.push(...newTypes);
+            // }
             var item = this.convert(type);
             items.push(item);
         }
@@ -242,12 +272,22 @@ var HomeViewModel = /** @class */ (function () {
         if (selected === null) {
             return;
         }
+        var separator = {
+            levelName: null,
+            subTypeName: null,
+            typeName: null,
+            level: null,
+            subType: null,
+            type: null,
+            url: null,
+            isSeparator: true
+        };
         var items = [];
         var selectedType = this.data.gems.types.filter(function (x) { return x.type === selected.type; })[0];
         if (selectedType.requirements) {
             var _loop_1 = function (requirement) {
                 var type = this_1.data.gems.types.filter(function (x) { return x.type === requirement.type; })[0];
-                var item = this_1.convertRequirement(type, requirement);
+                var item = this_1.convertRequirement(type, requirement.level);
                 items.push(item);
             };
             var this_1 = this;
@@ -256,14 +296,89 @@ var HomeViewModel = /** @class */ (function () {
                 _loop_1(requirement);
             }
         }
+        else if (selectedType.subType === _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC) {
+            var levelValue = this.levelValue();
+            switch (levelValue) {
+                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED:
+                    {
+                        break;
+                    }
+                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED:
+                    {
+                        var item1 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item2 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        items.push.apply(items, [item1, item2]);
+                        break;
+                    }
+                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL:
+                    {
+                        var item1 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item2 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item11 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item22 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item33 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        items.push.apply(items, [item1, item2, separator, item11, item22, item33]);
+                        break;
+                    }
+                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWLESS:
+                    {
+                        var item1 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL);
+                        var item2 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL);
+                        var item11 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item22 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item33 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item111 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item222 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item333 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item444 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        items.push.apply(items, [item1, item2, separator, item11, item22, item33, separator, item111, item222, item333, item444]);
+                        break;
+                    }
+                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].PERFECT:
+                    {
+                        var item1 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWLESS);
+                        var item2 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWLESS);
+                        var item11 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL);
+                        var item22 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL);
+                        var item33 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL);
+                        var item111 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item222 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item333 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item444 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].FLAWED);
+                        var item1111 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item2222 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item3333 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item4444 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        var item5555 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].CHIPPED);
+                        items.push.apply(items, [
+                            item1, item2,
+                            separator,
+                            item11, item22, item33,
+                            separator,
+                            item111, item222, item333, item444,
+                            separator,
+                            item1111, item2222, item3333, item4444, item5555
+                        ]);
+                        break;
+                    }
+                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].GREAT:
+                    {
+                        var item1 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].PERFECT);
+                        var item2 = this.convertRequirement(selectedType, _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].PERFECT);
+                        items.push.apply(items, [item1, item2, separator]);
+                        break;
+                    }
+            }
+        }
         (_a = this.requirements).push.apply(_a, items);
     };
-    HomeViewModel.prototype.convert = function (type) {
+    HomeViewModel.prototype.convert = function (type, level) {
+        if (level === void 0) { level = _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL; }
         var subType = this.data.gems.subTypes.filter(function (x) { return x.type === type.subType; })[0];
         var url = type.type;
         switch (type.subType) {
             case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC: {
-                url += "_" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL;
+                url += "_" + level;
                 break;
             }
             case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE: {
@@ -278,17 +393,18 @@ var HomeViewModel = /** @class */ (function () {
             ? this.selectedItemValue().type
             : null;
         var result = {
-            name: type.name,
             type: type.type,
-            subType: subType.name,
+            typeName: type.name,
+            subType: subType.type,
+            subTypeName: subType.name,
             url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
             isSelected: selectedItemType === type.type
         };
         return result;
     };
-    HomeViewModel.prototype.convertRequirement = function (type, requirement) {
+    HomeViewModel.prototype.convertRequirement = function (type, levelValue) {
         var subType = this.data.gems.subTypes.filter(function (x) { return x.type === type.subType; })[0];
-        var level = this.data.gems.levels.filter(function (x) { return x.type === requirement.level; })[0];
+        var level = this.data.gems.levels.filter(function (x) { return x.type === levelValue; })[0];
         var url = type.type;
         switch (type.subType) {
             case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC: {
@@ -301,11 +417,14 @@ var HomeViewModel = /** @class */ (function () {
             }
         }
         var result = {
-            name: type.name,
             type: type.type,
-            subType: subType.name,
+            typeName: type.name,
+            subType: subType.type,
+            subTypeName: subType.name,
+            level: level ? level.type : "-",
+            levelName: level ? level.name : "-",
             url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
-            level: level ? level.name : "-"
+            isSeparator: false
         };
         return result;
     };
