@@ -28,7 +28,8 @@
 		"serve-static": "^1.13.2"
 	},
 	"scripts": {
-		"prestart": "node .\\node_modules\\webpack-cli\\bin\\cli.js"
+		"install": "node .\\node_modules\\webpack-cli\\bin\\cli.js",
+		"prestart": "npm install"
 	},
 	"repository": {
 		"type": "git",
