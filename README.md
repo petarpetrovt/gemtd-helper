@@ -1,3 +1,3 @@
 # gemtd-helper
 
-GEM TD Helper
+Warcraft 3 GEM TD Helper
