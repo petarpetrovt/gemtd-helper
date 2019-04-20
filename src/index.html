@@ -34,58 +34,109 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 	</nav>
-	<main role="main" class="container" style="margin-top: 100px">
-		<table class="table table-hover table-bordered table-striped table-dark table-sm">
-			<caption style="caption-side: top;">
-				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-secondary active" data-bind="click: onFilterSubTypeClicked.bind($data, null)">
-						<input type="radio" name="options" autocomplete="off" checked>
-						ALL
-					</label>
-					<label class="btn btn-secondary"
-						data-bind="click: onFilterSubTypeClicked.bind($data, GemTDHelper.v154.GemSubType.BASIC)">
-						<input type="radio" name="options" autocomplete="off">
-						BASIC
-					</label>
-					<label class="btn btn-secondary"
-						data-bind="click: onFilterSubTypeClicked.bind($data, GemTDHelper.v154.GemSubType.SPECIAL)">
-						<input type="radio" name="options" autocomplete="off">
-						SPECIAL
-					</label>
-					<label class="btn btn-secondary"
-						data-bind="click: onFilterSubTypeClicked.bind($data, GemTDHelper.v154.GemSubType.SLATE)">
-						<input type="radio" name="options" autocomplete="off">
-						SLATE
-					</label>
-				</div>
-				<br />
-				<br />
-				<input class="form-control" type="text" placeholder="Search..." data-bind="textInput: searchValue">
-			</caption>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Name</th>
-					<th>Type</th>
-				</tr>
-			</thead>
-			<tbody data-bind="foreach: items">
-				<tr class="tower-row">
-					<td>
-						<img data-bind="attr:{src: url, alt: type}" class="tower-image" />
-					</td>
-					<td data-bind="text: type"></td>
-					<td data-bind="text: subType"></td>
-				</tr>
-			</tbody>
-			<tbody data-bind="if: items().length <= 0">
-				<tr>
-					<td colspan="3">
-						No gems.
-					</td>
-				</tr>
-			</tbody>
-		</table>
+	<main role="main" class="container" style="margin-top: 80px;">
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-hover table-bordered table-striped table-dark table-sm">
+					<caption style="caption-side: top; height: 200px;">
+						<h3>Gems</h3>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-secondary active"
+								data-bind="click: onFilterSubTypeClicked.bind($data, null)">
+								<input type="radio" name="options" autocomplete="off" checked>
+								ALL
+							</label>
+							<label class="btn btn-secondary"
+								data-bind="click: onFilterSubTypeClicked.bind($data, GemTDHelper.v154.GemSubType.BASIC)">
+								<input type="radio" name="options" autocomplete="off">
+								BASIC
+							</label>
+							<label class="btn btn-secondary"
+								data-bind="click: onFilterSubTypeClicked.bind($data, GemTDHelper.v154.GemSubType.SPECIAL)">
+								<input type="radio" name="options" autocomplete="off">
+								SPECIAL
+							</label>
+							<label class="btn btn-secondary"
+								data-bind="click: onFilterSubTypeClicked.bind($data, GemTDHelper.v154.GemSubType.SLATE)">
+								<input type="radio" name="options" autocomplete="off">
+								SLATE
+							</label>
+						</div>
+						<br />
+						<br />
+						<input class="form-control" type="text" placeholder="Search by name..."
+							data-bind="textInput: searchValue">
+					</caption>
+					<colgroup>
+						<col style="width: auto;" />
+						<col style="width: 50%;" />
+						<col style="width: 50%;" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th style=" min-width: 40px;"></th>
+							<th>Name</th>
+							<th>Type</th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach: items">
+						<tr class="tower-row"
+							data-bind="click: $parent.onItemClicked.bind($parent), class: isSelected ? 'active' : ''">
+							<td>
+								<img data-bind="attr:{src: url, alt: type}" class="tower-image" />
+							</td>
+							<td data-bind="text: name"></td>
+							<td data-bind="text: subType"></td>
+						</tr>
+					</tbody>
+					<tbody data-bind="if: items().length <= 0">
+						<tr>
+							<td colspan="3">
+								No gems.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<table class="table table-hover table-bordered table-striped table-dark table-sm">
+					<caption style="caption-side: top; height: 200px;">
+						<h3>Requirements</h3>
+					</caption>
+					<colgroup>
+						<col style="width: auto;" />
+						<col style="width: 33%;" />
+						<col style="width: 33%;" />
+						<col style="width: 33%;" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th style=" min-width: 40px;"></th>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Level</th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach: requirements">
+						<tr class="tower-row">
+							<td>
+								<img data-bind="attr:{src: url, alt: type}" class="tower-image" />
+							</td>
+							<td data-bind="text: name"></td>
+							<td data-bind="text: subType"></td>
+							<td data-bind="text: level"></td>
+						</tr>
+					</tbody>
+					<tbody data-bind="if: requirements().length <= 0">
+						<tr>
+							<td colspan="4">
+								No requirements.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</main>
 </body>
 

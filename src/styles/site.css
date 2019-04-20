@@ -7,3 +7,7 @@
 .tower-row {
 	cursor: pointer;
 }
+
+.tower-row.active {
+	background-color: #000 !important;
+}

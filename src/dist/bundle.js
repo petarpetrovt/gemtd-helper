@@ -177,13 +177,28 @@ var HomeViewModel = /** @class */ (function () {
         var _this = this;
         this.data = data;
         this.items = ko.observableArray([]);
+        this.requirements = ko.observableArray([]);
         this.subTypeValue = ko.observable(null);
+        this.selectedItemValue = ko.observable(null);
+        this.selectedItemValue.subscribe(function () {
+            _this.ensureRequirements();
+        });
         this.searchValue = ko.observable("");
         this.searchValue.subscribe(function () {
             _this.ensureItems();
         });
         this.ensureItems();
     }
+    HomeViewModel.prototype.onItemClicked = function (item, event) {
+        var selected = this.selectedItemValue();
+        if (selected && selected.type === item.type) {
+            this.selectedItemValue(null);
+        }
+        else {
+            this.selectedItemValue(item);
+        }
+        this.ensureItems();
+    };
     HomeViewModel.prototype.onFilterSubTypeClicked = function (subType) {
         if (subType === void 0) { subType = null; }
         this.subTypeValue(subType);
@@ -210,19 +225,41 @@ var HomeViewModel = /** @class */ (function () {
     };
     HomeViewModel.prototype.ensureItems = function () {
         var _a;
-        var subTypes = this.data.gems.subTypes;
         var types = this.filterItems();
         var items = [];
         for (var _i = 0, types_1 = types; _i < types_1.length; _i++) {
-            var type_1 = types_1[_i];
-            var item = this.convert(type_1, subTypes);
+            var type = types_1[_i];
+            var item = this.convert(type);
             items.push(item);
         }
         this.items.removeAll();
         (_a = this.items).push.apply(_a, items);
     };
-    HomeViewModel.prototype.convert = function (type, subTypes) {
-        var subType = subTypes.filter(function (x) { return x.type === type.subType; })[0];
+    HomeViewModel.prototype.ensureRequirements = function () {
+        var _a;
+        this.requirements.removeAll();
+        var selected = this.selectedItemValue();
+        if (selected === null) {
+            return;
+        }
+        var items = [];
+        var selectedType = this.data.gems.types.filter(function (x) { return x.type === selected.type; })[0];
+        if (selectedType.requirements) {
+            var _loop_1 = function (requirement) {
+                var type = this_1.data.gems.types.filter(function (x) { return x.type === requirement.type; })[0];
+                var item = this_1.convertRequirement(type, requirement);
+                items.push(item);
+            };
+            var this_1 = this;
+            for (var _i = 0, _b = selectedType.requirements; _i < _b.length; _i++) {
+                var requirement = _b[_i];
+                _loop_1(requirement);
+            }
+        }
+        (_a = this.requirements).push.apply(_a, items);
+    };
+    HomeViewModel.prototype.convert = function (type) {
+        var subType = this.data.gems.subTypes.filter(function (x) { return x.type === type.subType; })[0];
         var url = type.type;
         switch (type.subType) {
             case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC: {
@@ -237,10 +274,38 @@ var HomeViewModel = /** @class */ (function () {
                 break;
             }
         }
+        var selectedItemType = this.selectedItemValue()
+            ? this.selectedItemValue().type
+            : null;
         var result = {
-            type: type.name,
+            name: type.name,
+            type: type.type,
             subType: subType.name,
-            url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png"
+            url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
+            isSelected: selectedItemType === type.type
+        };
+        return result;
+    };
+    HomeViewModel.prototype.convertRequirement = function (type, requirement) {
+        var subType = this.data.gems.subTypes.filter(function (x) { return x.type === type.subType; })[0];
+        var level = this.data.gems.levels.filter(function (x) { return x.type === requirement.level; })[0];
+        var url = type.type;
+        switch (type.subType) {
+            case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC: {
+                url += "_" + level.type;
+                break;
+            }
+            case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE: {
+                url += "_" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE;
+                break;
+            }
+        }
+        var result = {
+            name: type.name,
+            type: type.type,
+            subType: subType.name,
+            url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
+            level: level ? level.name : "-"
         };
         return result;
     };
