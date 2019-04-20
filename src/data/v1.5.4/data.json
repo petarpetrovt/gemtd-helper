@@ -1,6 +1,7 @@
 {
 	"title": "GEM TD+",
 	"version": "1.5.4",
+	"repository": "https://github.com/nvs/gem",
 	"gems": {
 		"levels": [
 			{
