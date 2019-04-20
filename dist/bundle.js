@@ -397,7 +397,7 @@ var HomeViewModel = /** @class */ (function () {
             typeName: type.name,
             subType: subType.type,
             subTypeName: subType.name,
-            url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
+            url: "data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
             isSelected: selectedItemType === type.type
         };
         return result;
@@ -423,7 +423,7 @@ var HomeViewModel = /** @class */ (function () {
             subTypeName: subType.name,
             level: level ? level.type : "-",
             levelName: level ? level.name : "-",
-            url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
+            url: "data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png",
             isSeparator: false
         };
         return result;
@@ -432,7 +432,7 @@ var HomeViewModel = /** @class */ (function () {
 }());
 
 $(function () {
-    $.getJSON("/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataJSONPath"])
+    $.getJSON("data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataJSONPath"])
         .done(function (data) {
         ko.applyBindings(new HomeViewModel(data));
     });

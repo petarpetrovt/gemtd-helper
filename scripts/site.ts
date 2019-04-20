@@ -301,7 +301,7 @@ export class HomeViewModel {
 			typeName: type.name,
 			subType: subType.type,
 			subTypeName: subType.name,
-			url: `/data/${v154.DataImagesPath}/${url}.png`,
+			url: `data/${v154.DataImagesPath}/${url}.png`,
 			isSelected: selectedItemType === type.type
 		};
 
@@ -331,7 +331,7 @@ export class HomeViewModel {
 			subTypeName: subType.name,
 			level: level ? level.type : "-",
 			levelName: level ? level.name : "-",
-			url: `/data/${v154.DataImagesPath}/${url}.png`,
+			url: `data/${v154.DataImagesPath}/${url}.png`,
 			isSeparator: false
 		};
 
@@ -340,7 +340,7 @@ export class HomeViewModel {
 }
 
 $(function () {
-	$.getJSON(`/data/${v154.DataJSONPath}`)
+	$.getJSON(`data/${v154.DataJSONPath}`)
 		.done(function (data: v154.GemsJSON) {
 			ko.applyBindings(new HomeViewModel(data));
 		});
