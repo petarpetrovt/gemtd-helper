@@ -1,5 +1,9 @@
 .tower-image {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
+	width: 30px;
+	height: 30px;
+	object-fit: contain;
+}
+
+.tower-row {
+	cursor: pointer;
 }

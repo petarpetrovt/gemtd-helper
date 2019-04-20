@@ -1,3 +1,4 @@
+var GemTDHelper =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -158,7 +159,7 @@ var DataImagesPath = "v1.5.4/images";
 /*!*************************!*\
   !*** ./scripts/site.ts ***!
   \*************************/
-/*! exports provided: HomeViewModel */
+/*! exports provided: v154, HomeViewModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -167,44 +168,89 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_site_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/site.css */ "./styles/site.css");
 /* harmony import */ var _styles_site_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_site_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/v1.5.4/types */ "./data/v1.5.4/types/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "v154", function() { return _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__; });
+
 
 
 var HomeViewModel = /** @class */ (function () {
-    function HomeViewModel(items) {
-        this.items = ko.observable(items);
+    function HomeViewModel(data) {
+        var _this = this;
+        this.data = data;
+        this.items = ko.observableArray([]);
+        this.subTypeValue = ko.observable(null);
+        this.searchValue = ko.observable("");
+        this.searchValue.subscribe(function () {
+            _this.ensureItems();
+        });
+        this.ensureItems();
     }
+    HomeViewModel.prototype.onFilterSubTypeClicked = function (subType) {
+        if (subType === void 0) { subType = null; }
+        this.subTypeValue(subType);
+        this.ensureItems();
+    };
+    HomeViewModel.prototype.filterItems = function () {
+        var _this = this;
+        var types = this.data.gems.types;
+        if (this.subTypeValue()) {
+            types = types.filter(function (x) { return x.subType == _this.subTypeValue(); });
+        }
+        if (this.searchValue()) {
+            types = types.filter(function (x) {
+                var value = _this.searchValue().toLowerCase();
+                var index = -1;
+                index = x.name.toLowerCase().indexOf(value);
+                if (index >= 0) {
+                    return true;
+                }
+                return false;
+            });
+        }
+        return types;
+    };
+    HomeViewModel.prototype.ensureItems = function () {
+        var _a;
+        var subTypes = this.data.gems.subTypes;
+        var types = this.filterItems();
+        var items = [];
+        for (var _i = 0, types_1 = types; _i < types_1.length; _i++) {
+            var type_1 = types_1[_i];
+            var item = this.convert(type_1, subTypes);
+            items.push(item);
+        }
+        this.items.removeAll();
+        (_a = this.items).push.apply(_a, items);
+    };
+    HomeViewModel.prototype.convert = function (type, subTypes) {
+        var subType = subTypes.filter(function (x) { return x.type === type.subType; })[0];
+        var url = type.type;
+        switch (type.subType) {
+            case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC: {
+                url += "_" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL;
+                break;
+            }
+            case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE: {
+                url += "_" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE;
+                break;
+            }
+            case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SPECIAL: {
+                break;
+            }
+        }
+        var result = {
+            type: type.name,
+            subType: subType.name,
+            url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png"
+        };
+        return result;
+    };
     return HomeViewModel;
 }());
 
 $(function () {
     $.getJSON("/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataJSONPath"])
         .done(function (data) {
-        var items = [];
-        for (var i = 0; i < data.gems.types.length; i++) {
-            var type = data.gems.types[i];
-            var subType = data.gems.subTypes.filter(function (x) { return x.type === type.subType; })[0];
-            var url = type.type;
-            switch (type.subType) {
-                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].BASIC: {
-                    url += "_" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemLevel"].NORMAL;
-                    break;
-                }
-                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE: {
-                    url += "_" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SLATE;
-                    break;
-                }
-                case _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["GemSubType"].SPECIAL: {
-                    break;
-                }
-            }
-            var item = {
-                type: type.name,
-                subType: subType.name,
-                url: "/data/" + _data_v1_5_4_types__WEBPACK_IMPORTED_MODULE_1__["DataImagesPath"] + "/" + url + ".png"
-            };
-            items.push(item);
-        }
-        ko.applyBindings(new HomeViewModel(items));
+        ko.applyBindings(new HomeViewModel(data));
     });
 });
 

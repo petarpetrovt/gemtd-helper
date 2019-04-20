@@ -24,7 +24,8 @@ module.exports = (env, argv) => {
 		entry: './scripts/site.ts',
 		output: {
 			filename: isDevBuild ? 'bundle.js' : 'bundle.min.js',
-			path: path.join(__dirname, outputDir)
+			path: path.join(__dirname, outputDir),
+			library: 'GemTDHelper'
 		},
 		plugins: [
 			new CheckerPlugin(),
