@@ -2,6 +2,10 @@
 
 Warcraft 3 GEM TD Helper
 
+### Overview
+
+Warcraft 3 GEM TD Helper is a website guide for `GemTD+ v154` updated by [nvs](https://github.com/nvs/gem), originally created by Bryvx.
+
 ### Building from source
 
 #### Prerequisites
