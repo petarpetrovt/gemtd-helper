@@ -29,12 +29,20 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top justify-content-between">
+		<div>
+			<a class="navbar-brand" href="#">Warcraft 3 Gem TD Helper</a>
+			<a class="badge badge-info" href="https://github.com/petarpetrovt/gemtd-helper" target="_blank">alpha</a>
+		</div>
 		<a class="navbar-brand" href="#">Warcraft 3 Gem TD Helper</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggleNavbar"
 			aria-controls="toggleNavbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+		<div>
+			<a class="navbar-brand" target="_blank" data-bind="text: dataTitle, attr: { href: repositoryUrl }"></a>
+			<a class="badge badge-info" target="_blank" data-bind="text: versionTitle, attr: { href: versionUrl }"></a>
+		</div>
 	</nav>
 	<main role="main" class="container" style="margin-top: 80px;">
 		<div class="row" style="display: none;" data-bind="visible: true">

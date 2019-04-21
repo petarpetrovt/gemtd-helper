@@ -44,6 +44,14 @@ export class HomeViewModel {
 
 	levelVisible: KnockoutComputed<boolean>;
 
+	versionTitle: KnockoutComputed<string>;
+
+	repositoryUrl: KnockoutComputed<string>;
+
+	versionUrl: KnockoutComputed<string>;
+
+	dataTitle: KnockoutComputed<string>;
+
 	public constructor(data: v154.GemsJSON) {
 		this.data = data;
 		this.items = ko.observableArray([]);
@@ -78,6 +86,10 @@ export class HomeViewModel {
 		this.searchValue.subscribe(() => {
 			this.ensureItems();
 		});
+		this.versionTitle = ko.pureComputed(() => `v${this.data.version}`);
+		this.repositoryUrl = ko.pureComputed(() => this.data.repositoryUrl);
+		this.versionUrl = ko.pureComputed(() => this.data.versionUrl);
+		this.dataTitle = ko.pureComputed(() => this.data.title);
 
 		this.ensureItems();
 	}

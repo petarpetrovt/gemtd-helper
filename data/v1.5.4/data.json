@@ -1,7 +1,8 @@
 {
-	"title": "GEM TD+",
+	"title": "Gem TD+ by nvs",
 	"version": "1.5.4",
 	"repositoryUrl": "https://github.com/nvs/gem",
+	"versionUrl": "https://github.com/nvs/gem/releases/tag/v1.5.4",
 	"gems": {
 		"levels": [
 			{

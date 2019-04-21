@@ -205,6 +205,10 @@ var HomeViewModel = /** @class */ (function () {
         this.searchValue.subscribe(function () {
             _this.ensureItems();
         });
+        this.versionTitle = ko.pureComputed(function () { return "v" + _this.data.version; });
+        this.repositoryUrl = ko.pureComputed(function () { return _this.data.repositoryUrl; });
+        this.versionUrl = ko.pureComputed(function () { return _this.data.versionUrl; });
+        this.dataTitle = ko.pureComputed(function () { return _this.data.title; });
         this.ensureItems();
     }
     HomeViewModel.prototype.onItemClicked = function (item, event) {
