@@ -1,4 +1,6 @@
 # gemtd-helper
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpetarpetrovt%2Fgemtd-helper.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpetarpetrovt%2Fgemtd-helper?ref=badge_shield)
+
 
 Warcraft 3 GEM TD Helper
 
@@ -25,3 +27,7 @@ npm install
 ```
 npm start
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpetarpetrovt%2Fgemtd-helper.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpetarpetrovt%2Fgemtd-helper?ref=badge_large)
